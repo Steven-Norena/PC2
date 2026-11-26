@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import type { TicketRequest } from "../types/location";
 import { locationService } from "../services/locationService";
+import axios from "axios";
+import type { ApiErrorResponse } from "../types/auth";
 
 export default function IssueForm() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -16,6 +18,15 @@ export default function IssueForm() {
     try {
       const response = await locationService.createIssue(data);
     } catch (err) {
+      if (axios.isAxiosError<ApiErrorResponse>(err)) {
+        if (err.response?.status === 404) {
+          setError("");
+        } else {
+          setError(err.response?.data?.message ??);
+        }
+      } else {
+        setError("Error de conexión con el servidor."); 
+      }
     } finally {
     }
   };
