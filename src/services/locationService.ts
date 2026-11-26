@@ -15,5 +15,15 @@ export const locationService = {
     createIssue: async (locationId: number, payload: TicketRequest): Promise<Ticket> => {
         const response = await api.post(`/location/${locationId}/tickets`, payload);
         return response.data;
+    },
+
+    getTicket: async (): Promise<Ticket[]> => {
+        const response = await api.get('me/tickets');
+        return response.data;
+    },
+
+    closeTicket: async (ticketId: number): Promise<Ticket> => {
+        const response = await api.patch(`tickets/${ticketId}/close`);
+        return response.data;
     }
 }

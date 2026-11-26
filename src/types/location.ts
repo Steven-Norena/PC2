@@ -8,7 +8,7 @@ export interface Location {
 };
 
 export interface PaginateLocation {
-    items: Aula[];
+    items: Location[];
     page: number;
     size: number;
     totalItems: number;
