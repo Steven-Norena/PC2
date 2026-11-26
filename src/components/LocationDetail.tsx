@@ -8,13 +8,13 @@ export default function LocationDetail() {
   const [location, setLocation] = useState<Location | null>(null);
   const locationId = new Number(id) as number
 
-  useEffect(
+  useEffect(() => {
     const getLocation = async () => {
       const response = await locationService.getLocationById(locationId);
       setLocation(response);
     }
     getLocation();
-    ,[])
+  },[])
   return (
     <>
       <div>
