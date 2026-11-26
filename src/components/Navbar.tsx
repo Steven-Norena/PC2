@@ -13,7 +13,8 @@ export function Navbar() {
   return (
     <header>
       <div>
-        <Link to="/">
+        <Link to="location">
+          Main
         </Link>
         <button
           type="button"

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import type { TicketRequest } from "../types/location";
+import { locationService } from "../services/locationService";
 
 export default function IssueForm() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -9,6 +11,13 @@ export default function IssueForm() {
     e.preventDefault();
     setError(null);
 
+    const data: TicketRequest = { description };
+
+    try {
+      const response = await locationService.createIssue(data);
+    } catch (err) {
+    } finally {
+    }
   };
 
   return (

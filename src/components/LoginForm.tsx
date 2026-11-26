@@ -30,7 +30,7 @@ export function LoginForm() {
         password,
       });
       login(response.token);
-      navigate("/spaces", { replace: true });
+      navigate("/location", { replace: true });
     } catch (err) {
       if (axios.isAxiosError<ApiErrorResponse>(err)) {
         if (err.response?.status === 401) {
@@ -51,7 +51,7 @@ export function LoginForm() {
       <section>
         <h1>Iniciar sesión</h1>
         <p>
-          Accede para consultar y reservar espacios de estudio.
+          Accede para consultar.
         </p>
 
         <form onSubmit={handleSubmit} noValidate>

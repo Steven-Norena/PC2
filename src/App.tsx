@@ -4,11 +4,13 @@ import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
 import { ProtectedRoute } from "./components/ProtectedRoute"
 import LocationDetailPage from "./pages/LocationDetailPage"
+import { Navbar } from "./components/Navbar"
 
 function App() {
   return (
     <>
       <AuthProvider>
+        <Navbar>
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<LoginPage />}/>
@@ -19,6 +21,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        </Navbar>
       </AuthProvider>
     </>
   )
